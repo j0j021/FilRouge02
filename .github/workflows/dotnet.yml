@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet ./Server/API restore
+      run: dotnet restore ./Server/API 
     - name: Build
       run: dotnet build ./Server/API --no-restore
     - name: Test Unitaire
