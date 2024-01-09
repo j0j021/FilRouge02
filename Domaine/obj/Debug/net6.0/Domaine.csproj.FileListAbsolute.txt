@@ -1,0 +1,11 @@
+C:\Winform\FilRouge\Domaine\bin\Debug\net6.0\Domaine.deps.json
+C:\Winform\FilRouge\Domaine\bin\Debug\net6.0\Domaine.dll
+C:\Winform\FilRouge\Domaine\bin\Debug\net6.0\Domaine.pdb
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.AssemblyInfoInputs.cache
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.AssemblyInfo.cs
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.csproj.CoreCompileInputs.cache
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.dll
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\refint\Domaine.dll
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\Domaine.pdb
+C:\Winform\FilRouge\Domaine\obj\Debug\net6.0\ref\Domaine.dll

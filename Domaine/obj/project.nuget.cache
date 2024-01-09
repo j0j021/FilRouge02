@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "GM1g0MgOhNVBFXYIDE/xYUr14q8qZnzV/owQEb8yIfRIao7hUbgiscujPQEjK2Qp8wcpK8Jsyc6Y18IkklCCrQ==",
+  "success": true,
+  "projectFilePath": "C:\\Winform\\FilRouge\\Domaine\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cda07sica\\.nuget\\packages\\fluentvalidation\\11.8.1\\fluentvalidation.11.8.1.nupkg.sha512",
+    "C:\\Users\\cda07sica\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.8.1\\fluentvalidation.dependencyinjectionextensions.11.8.1.nupkg.sha512",
+    "C:\\Users\\cda07sica\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
