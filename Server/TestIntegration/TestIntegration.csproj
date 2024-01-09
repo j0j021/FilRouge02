@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="dump-ticketing&amp;message-202401051126.sql" />
     <None Remove="Fixtures\appsettings.Integrations.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.Integrations.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dump-ticketing&amp;message-202401051126.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
