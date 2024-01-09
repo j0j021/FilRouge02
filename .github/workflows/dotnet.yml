@@ -23,6 +23,6 @@ jobs:
     - name: Build
       run: dotnet build ./Server/API --no-restore
     - name: Test Unitaire
-      run: dotnet test ./Server/TestUnitaire --no-build --verbosity normal
+      run: dotnet test ./Server/TestUnitaire --verbosity normal
     - name: Test Integrations
-      run: dotnet test ./Server/TestIntegration --no-build-verbosity normal
+      run: dotnet test ./Server/TestIntegration --verbosity normal
