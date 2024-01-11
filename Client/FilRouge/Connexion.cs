@@ -9,6 +9,7 @@ public partial class Connexion : Form
 {
     private string AccesToken;
     APILink _link;
+    public string base_Url = "https://localhost:7201/";
     public Connexion()
     {
         InitializeComponent();
@@ -25,7 +26,7 @@ public partial class Connexion : Form
             var login = new LoginRequest(txtUsername.Text, txtPassword.Text);
             var logJson = JsonSerializer.Serialize(login);
             JsonContent json = JsonContent.Create(login);
-            var reponse = await _link._httpClient.PostAsync("https://localhost:7201/api/account/login", json);
+            var reponse = await _link._httpClient.PostAsync(base_Url + "api/account/login", json);
             if (reponse.IsSuccessStatusCode)
             {
                 AccesToken = (await reponse.Content.ReadFromJsonAsync<LoginResponse>()).AccessToken;

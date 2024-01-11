@@ -10,5 +10,6 @@ namespace BLL.Interfaces
         public Task<int> AddCategorieAsync(Categorie categorie);
         public Task<int> DeleteCategorieAsync(int id);
         public Task<IEnumerable<Materiel>> GetMaterielByIdCat(int id);
+        public Task<IEnumerable<Categorie>> GetCategorieMaterielAsync(int id);
     }
 }

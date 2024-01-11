@@ -68,11 +68,17 @@ internal class UserRepositoryMariaDB : IUserRepository
     {
         throw new NotImplementedException();
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="Password"></param>
+    /// <returns>role du user si mmot de passe est valide</returns>
+    /// <exception cref="NotImplementedException"></exception>
     public async Task<User> GetRoleAsync(string name, string Password)
     {
         string salt = BC.GenerateSalt(8, 'y');
-        string pwdHash = BC.HashPassword(Password, salt);
+
 
         await OpenConnectionAsync();
         var q = "SELECT password as Password,Label as role  FROM `ticketing&message`.users u, Role r ,UserRole ur WHERE name=@name  AND ur.IdUser=u.id AND r.Id =ur.IdRole ";
@@ -85,12 +91,12 @@ internal class UserRepositoryMariaDB : IUserRepository
         else return null;
         throw new NotImplementedException();
     }
-    public async Task<int> AssignerMaterielAsync(int idUser, int idMat)
+    public async Task<int> AssignerMaterielAsync(int idUser, int idMat, DateTime debut, DateTime fin)
     {
         await OpenConnectionAsync();
 
-        string q = "Update Materiel SET Proprietaire =(SELECT name from users WHERE id = @idUser) WHERE Id = @idMat";
-        var res = await _connection.ExecuteAsync(q, new { idUser, idMat });
+        string q = "Update Materiel SET Proprietaire =(SELECT name from users WHERE id = @idUser),Debut = @debut,Fin = @fin WHERE Id = @idMat";
+        var res = await _connection.ExecuteAsync(q, new { idUser, idMat, debut, fin });
         return res;
     }
 }

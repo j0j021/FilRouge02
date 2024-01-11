@@ -32,7 +32,7 @@ internal class MaterielRepositoryMariaDB : IMaterielRepository
 
     public async Task<IEnumerable<Materiel>> GetAllAsync()
     {
-        await OpenConnectionAsync();
+
         string q = "SELECT * FROM Materiel";
         return await db.Connection.QueryAsync<Materiel>(q);
 
@@ -40,7 +40,6 @@ internal class MaterielRepositoryMariaDB : IMaterielRepository
 
     public async Task<Materiel> GetByIdAsync(int id)
     {
-        await OpenConnectionAsync();
         string q = "SELECT * FROM Materiel WHERE Id=@id";
         return await db.Connection.QueryFirstAsync<Materiel>(q, new { id });
 
@@ -81,19 +80,34 @@ internal class MaterielRepositoryMariaDB : IMaterielRepository
     public async Task<IEnumerable<Materiel>> GetMaterielByCategorieAsync(int IdCategorie)
     {
         await OpenConnectionAsync();
-        string q = "SELECT M.* FROM Materiel M ,MaterielCategories mc,users u WHERE M.Id = mc.IdMateriel AND mc.IdCategories = @IdCategorie GROUP BY IdCategories";
-        var res = await db.Connection.QueryAsync<Materiel>(q, new { IdCategorie });
-        await CloseConnectionAsync();
-        return res;
+        string q = "";
+        //25 corespond à l'id de toute les catégories
+        if (IdCategorie == 25)
+        {
+            q = "SELECT M.* FROM Materiel M, MaterielCategories mc,users u WHERE M.Id = mc.IdMateriel AND mc.IdCategories  GROUP BY Id";
+            var res = await db.Connection.QueryAsync<Materiel>(q);
+            return res;
 
+        }
+        else
+        {
+
+
+            q = "SELECT M.* FROM Materiel M ,MaterielCategories mc,users u WHERE M.Id = mc.IdMateriel AND mc.IdCategories = @IdCategorie GROUP BY Id";
+            var res = await db.Connection.QueryAsync<Materiel>(q, new { IdCategorie });
+            await CloseConnectionAsync();
+            return res;
+        }
     }
 
     public async Task<int> AddMaterielCategorieAsync(AddMaterielDTORequest materiel)
     {
         await OpenConnectionAsync();
         string Nom = materiel.Nom;
-        string q = "INSERT  INTO Materiel (nom) VALUES (@Nom); SELECT LAST_INSERT_ID() ";
-        var result = await _connection.QueryAsync<int>(q, new { Nom });
+        DateTime debut = DateTime.Now;
+        DateTime fin = DateTime.Now;
+        string q = "INSERT  INTO Materiel (nom,Debut,Fin) VALUES (@Nom,@debut,@fin); SELECT LAST_INSERT_ID() ";
+        var result = await _connection.QueryAsync<int>(q, new { Nom, debut, fin });
         int idMat = result.Single();
         int idCat = materiel.IdCat;
         string qComposition = "INSERT INTO MaterielCategories (IdMateriel,IdCategories) VALUES (@idMat,@idCat)";

@@ -19,7 +19,7 @@ public class UserService : IUserService
     }
     public async Task<int> AssignerMaterielAsync(AssignerMaterielDTORequest lien)
     {
-        int res = await _dbContext.User.AssignerMaterielAsync(lien.idUser, lien.idMateriel);
+        int res = await _dbContext.User.AssignerMaterielAsync((int)lien.idUser, lien.idMateriel, (DateTime)lien.Debut, (DateTime)lien.Fin);
         return res;
     }
 

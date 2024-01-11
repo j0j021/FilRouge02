@@ -1,4 +1,6 @@
-﻿namespace FilRouge
+﻿using Domain.Entities;
+
+namespace FilRouge
 {
     partial class affichage
     {
@@ -112,7 +114,7 @@
             dgvMateriel.RowTemplate.Height = 29;
             dgvMateriel.Size = new Size(486, 165);
             dgvMateriel.TabIndex = 1;
-            dgvMateriel.CurrentCellChanged += dgvMateriel_CurrentCellChanged;
+            dgvMateriel.CellClick += dgvMateriel_CellClickAsync;
             // 
             // flowLayoutPanel1
             // 
@@ -323,7 +325,6 @@
             Name = "affichage";
             Text = "Affichage";
             Load += affichage_LoadAsync;
-            Shown += affichage_Shown;
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCategorie).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMateriel).EndInit();

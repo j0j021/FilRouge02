@@ -21,7 +21,7 @@ public class AbstractIntegrationTest : IClassFixture<APIWebApplicationFactory>
         _client = fixture.CreateClient();
         try
         {
-            StreamReader sr = new StreamReader("dump-ticketing&message-202401051126.sql");
+            StreamReader sr = new StreamReader("dump-ticketing&message-202401110911.sql");
             line = sr.ReadLine();
             while (line != null)
             {

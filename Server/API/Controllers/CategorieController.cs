@@ -65,5 +65,12 @@ public class CategorieController : APIBaseController
         var res = await _categorieService.UpdateCategorieAsync(id, cat);
         return Ok(res);
     }
+    [HttpGet("materiel {id}")]
+    public async Task<IActionResult> GetCategorieMaterielAsync(int id)
+    {
+        var res = await _categorieService.GetCategorieMaterielAsync(id);
+        return Ok(res);
+    }
 
 }
+

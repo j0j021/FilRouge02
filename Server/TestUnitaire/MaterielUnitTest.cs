@@ -13,7 +13,7 @@ public class MaterielUnitTest
     public async void AddMaterielShouldReturnOK()
     {
         //Arrange
-        AddMaterielDTORequest materiel = new AddMaterielDTORequest("Casque", 15);
+        AddMaterielDTORequest materiel = new AddMaterielDTORequest("Casque", 15, null, null);
         IMaterielService materielService = Mock.Of<IMaterielService>();
         MaterielController materielController = new MaterielController(materielService);
         //Act

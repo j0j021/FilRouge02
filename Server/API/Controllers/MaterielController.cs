@@ -41,7 +41,7 @@ public class MaterielController : APIBaseController
     public async Task<IActionResult> UpdateMaterielAsync(int id, [FromBody] ModifyMaterielDTORequest materiel)
 
     {
-        Materiel mat = new Materiel(id, materiel.Name, null);
+        Materiel mat = new Materiel(id, materiel.Name, null, DateTime.Now, DateTime.Now);
         var res = await _materielService.UpdateMaterielAsync(mat);
         return Ok(res);
     }

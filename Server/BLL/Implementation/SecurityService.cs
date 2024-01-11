@@ -21,12 +21,16 @@ internal class SecurityService : ISecurityService
     public async Task<string> SignIn(string username, string password)
     {
         var role = await _dbContext.User.GetRoleAsync(username, password);
-
-        if (role.Role == "Admin" || role.Role == "Utilisateur")
+        if (role is not null)
         {
-            return await Task.FromResult(GenerateJwtToken(username, new List<string>() { role.Role }));
+
+            if (role.Role == "Admin" || role.Role == "Utilisateur")
+            {
+                return await Task.FromResult(GenerateJwtToken(username, new List<string>() { role.Role }));
+            }
         }
         else return null;
+        return null;
     }
 
     private string GenerateJwtToken(string username, List<string> roles)

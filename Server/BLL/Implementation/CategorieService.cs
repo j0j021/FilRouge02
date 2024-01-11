@@ -50,6 +50,18 @@ public class CategorieService : ICategorieService
         return cat;
         throw new NotImplementedException();
     }
-
-
+    public async Task<IEnumerable<Categorie>> GetCategorieMaterielAsync(int id)
+    {
+        var cat = await _dbContext.Categorie.GetCategorieMaterielAsync(id);
+        return cat;
+    }
 }
+
+
+
+
+
+
+
+
+

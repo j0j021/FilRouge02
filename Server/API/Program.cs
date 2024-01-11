@@ -1,3 +1,4 @@
+using API.Filters;
 using BLL;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options =>
 {
 #if !DEBUG
-    options.Filters.Add<ApiExceptionFilterAttribute>();
+    options.Filters.Add<ExecptionFilters>();
 #endif
 });
 builder.Services.addBLL();

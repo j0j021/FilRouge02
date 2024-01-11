@@ -39,7 +39,16 @@ internal class CategoryRepositoryMariaDB : ICategorieRepository
     public async Task<Categorie> GetByIdAsync(int id)
     {
         await OpenConnectionAsync();
-        string q = "Select * FROM Categories WHERE Id = @id";
+        //25 est l'id de toute les catégories
+        string q = "";
+        if (id == 25)
+        {
+            q = "SELECT * FROM Categories";
+        }
+        else
+        {
+            q = "Select * FROM Categories WHERE Id = @id";
+        }
         var res = await db.Connection.QueryFirstAsync<Categorie>(q, new { id });
         await CloseConnectionAsync();
         return res;
@@ -103,4 +112,13 @@ internal class CategoryRepositoryMariaDB : ICategorieRepository
         return res;
         throw new NotImplementedException();
     }
+    public async Task<IEnumerable<Categorie>> GetCategorieMaterielAsync(int id)
+    {
+        await OpenConnectionAsync();
+        string q = "SELECT c.* FROM Categories c, MaterielCategories mc  WHERE c.Id =mc.IdCategories AND IdMateriel = @id";
+        var res = await db.Connection.QueryAsync<Categorie>(q, new { id });
+        await CloseConnectionAsync();
+        return res;
+    }
 }
+
