@@ -1,5 +1,5 @@
 version: '1.0'
-services: 
+services:
 
 api_materiel: 'image:josephsicard/api:latest'
 ports:
