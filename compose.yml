@@ -1,7 +1,7 @@
 version: '1.0'
-services: null
+services:
  api_materiel:
- image:josephsicard/api:latest
+  image: josephsicard/api:latest
  ports:
   - "7201:8080"
-   restart:always
+restart: always
