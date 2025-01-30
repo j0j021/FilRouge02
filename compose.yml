@@ -4,4 +4,4 @@ services:
   image: josephsicard/api:latest
   ports: 
   - "7201:8080"
-restart: always
+
